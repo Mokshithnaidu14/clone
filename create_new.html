@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <style>
+        /* Center the box */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #1877f2;
+            margin-bottom: 20px;
+        }
+
+        /* Style the box */
+        .box {
+            width: 400px; /* Increased width */
+            height: 450px; /* Increased height */
+            background-color: white;
+            padding: 25px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style the image */
+        .box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        /* Style the paragraph */
+        .box p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Style the input field */
+        .box input {
+            width: 85%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .box input::placeholder {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Style the button */
+        .box button {
+            width: 85%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .box button:hover {
+            background-color: #165eae;
+        }
+    </style>
+    <script>
+        // Initialize or retrieve users array from localStorage
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        function addUser() {
+            let username = document.getElementById("username").value.trim();
+
+            if (username === "") {
+                alert("Please enter a valid username.");
+                return;
+            }
+
+            // Add user to array
+            users.push({ username: username });
+            
+            // Store in localStorage
+            localStorage.setItem("users", JSON.stringify(users));
+
+            // Redirect to next page
+            location.href = "page3.html";
+        }
+
+        function loadUserData() {
+            // Display last entered username (optional feature)
+            if (users.length > 0) {
+                document.getElementById("username").value = users[users.length - 1].username;
+            }
+        }
+
+        window.onload = loadUserData;
+    </script>
+</head>
+<body>
+
+    <h1>Facebook</h1>
+    
+    <div class="box">
+        <img src="Screenshot 2025-02-07 010431.png" alt="Profile Picture"> <!-- Small image -->
+        <p>Please enter your details</p> <!-- Paragraph -->
+        <input type="text" placeholder="Username" id="username"> <!-- Input field -->
+        <button onclick="addUser()"><a href="setting_pass.html">Submit</a></button> <!-- Button -->
+    </div>
+
+</body>
+</html>
